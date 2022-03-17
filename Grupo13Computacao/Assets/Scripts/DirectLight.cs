@@ -11,6 +11,7 @@ public class DirectLight : MonoBehaviour
     void Start()
     {
         lt = GetComponent<Light>();
+        
     }
 
     // Update is called once per frame
@@ -21,7 +22,10 @@ public class DirectLight : MonoBehaviour
             transform.Rotate(0.1f, 0, 0);
         }
 
-        if(transform.eulerAngles.x < 75)
+        Color.Lerp(Color.yellow, Color.white, float t);
+        
+
+       /* if(transform.eulerAngles.x < 75)
         {
             lt.color = (Color.yellow );
         }
@@ -32,7 +36,7 @@ public class DirectLight : MonoBehaviour
         else if(transform.eulerAngles.x > 145)
         {
             lt.color = (Color.red );
-        }          
+        } */         
         
     }
 }
