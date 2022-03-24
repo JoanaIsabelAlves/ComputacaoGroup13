@@ -7,6 +7,7 @@ public class DirectLight : MonoBehaviour
     // Start is called before the first frame update
 
     Light lt;
+    bool changeColor = false;
 
     void Start()
     {
@@ -22,21 +23,35 @@ public class DirectLight : MonoBehaviour
             transform.Rotate(0.1f, 0, 0);
         }
 
-        Color.Lerp(Color.yellow, Color.white, float t);
-        
+        if(!changeColor)
+        {
+            GetComponent<Light>().color = Color.Lerp(Color.yellow, Color.white, Mathf.PingPong(Time.time, 1));
+            if (GetComponent<Light>().color == Color.white)
+            {
+                changeColor = true;
+            }
+        }
+        else
+        {
+            GetComponent<Light>().color = Color.Lerp(Color.white, Color.red, Mathf.PingPong(Time.time, 1));
+        }
+       
 
-       /* if(transform.eulerAngles.x < 75)
-        {
-            lt.color = (Color.yellow );
-        }
-        else if(transform.eulerAngles.x < 145  && transform.eulerAngles.x > 75)
-        {
-            lt.color = (Color.white );
-        }
-        else if(transform.eulerAngles.x > 145)
-        {
-            lt.color = (Color.red );
-        } */         
-        
+        //Color.Lerp(Color.yellow, Color.white, Mathf.PingPong(Time.time, 1));
+
+
+        /* if(transform.eulerAngles.x < 75)
+         {
+             lt.color = (Color.yellow );
+         }
+         else if(transform.eulerAngles.x < 145  && transform.eulerAngles.x > 75)
+         {
+             lt.color = (Color.white );
+         }
+         else if(transform.eulerAngles.x > 145)
+         {
+             lt.color = (Color.red );
+         } */
+
     }
 }
